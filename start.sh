@@ -19,7 +19,7 @@ docker compose -f "$SCRIPT_DIR/n8n/docker-compose.yml" --env-file "$ENV_FILE" up
 echo "Starting open-webui..."
 docker compose -f "$SCRIPT_DIR/open-webui/docker-compose.yml" --env-file "$ENV_FILE" up -d
 
-echo "Starting nginx-proxy-manager..."
-docker compose -f "$SCRIPT_DIR/nginx-proxy-manager/docker-compose.yml" --env-file "$ENV_FILE" up -d
+echo "Starting nginx..."
+docker compose -f "$SCRIPT_DIR/nginx/docker-compose.yml" --env-file "$ENV_FILE" up -d
 
 echo "All services started."
