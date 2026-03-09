@@ -14,8 +14,6 @@ services:
       - open-webui_data:/app/backend/data # Using a named volume
     networks:
       - homelab-net
-    depends_on:
-      - postgres
 
 networks:
   homelab-net:

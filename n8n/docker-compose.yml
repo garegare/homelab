@@ -20,8 +20,6 @@ services:
       - ./data:/home/node/.n8n
     networks:
       - homelab-net
-    depends_on:
-      - postgres
 
 networks:
   homelab-net:
