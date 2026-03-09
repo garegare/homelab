@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  open-webui:
+    image: 'ghcr.io/open-webui/open-webui:main'
+    container_name: open-webui
+    restart: always
+    ports:
+      - "3000:8080"
+    environment:
+      - POSTGRES_CONNECTION_STRING=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${OPEN_WEBUI_DB_NAME}
+      - SERVICE_URL=http://${OPEN_WEBUI_HOSTNAME}:8080 # Use host internal port if NPM proxies to it
+      - WEBHOOK_URL=http://${OPEN_WEBUI_HOSTNAME}/
+      - NODE_ENV=production
+    volumes:
+      - open-webui_data:/app/backend/data # Using a named volume
+    networks:
+      - homelab-net
+    depends_on:
+      - postgres
+
+networks:
+  homelab-net:
+    external: true
+
+volumes:
+  open-webui_data:
