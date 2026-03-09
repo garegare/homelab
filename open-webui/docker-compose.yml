@@ -5,8 +5,6 @@ services:
     image: 'ghcr.io/open-webui/open-webui:main'
     container_name: open-webui
     restart: always
-    ports:
-      - "3000:8080"
     environment:
       - POSTGRES_CONNECTION_STRING=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${OPEN_WEBUI_DB_NAME}
       - SERVICE_URL=http://${OPEN_WEBUI_HOSTNAME}:8080 # Use host internal port if NPM proxies to it
