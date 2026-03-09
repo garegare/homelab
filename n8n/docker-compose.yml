@@ -10,11 +10,13 @@ services:
       - DB_POSTGRESDB_DATABASE=n8n
       - DB_POSTGRESDB_USER=homelab_user
       - DB_POSTGRESDB_PASSWORD=${DB_POSTGRESDB_PASSWORD}
-      - N8N_HOST=${N8N_HOSTNAME} # Using hostname from .env
+      - N8N_HOST=${N8N_HOSTNAME}
       - N8N_PORT=5678
-      - N8N_PROTOCOL=http # Changed to http for local network
+      - N8N_PROTOCOL=http
+      - N8N_PATH=/n8n/
+      - N8N_SECURE_COOKIE=false
       - NODE_ENV=production
-      - WEBHOOK_URL=http://${N8N_HOSTNAME}/
+      - WEBHOOK_URL=http://${N8N_HOSTNAME}/n8n/
       - DB_POSTGRESDB_DATABASE=${N8N_DB_NAME}
     volumes:
       - ./data:/home/node/.n8n
